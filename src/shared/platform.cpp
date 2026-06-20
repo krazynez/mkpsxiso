@@ -72,9 +72,9 @@ int SeekFile(FILE *file, int64_t offset, int origin)
 #endif
 }
 
-std::optional<struct stat64> Stat(const fs::path& path)
+std::optional<struct stat> Stat(const fs::path& path)
 {
-	struct stat64 fileAttrib;
+	struct stat fileAttrib;
 #ifdef _WIN32
 	// Windows _wstat64 can't handle timestamps prior to 1970
 	WIN32_FILE_ATTRIBUTE_DATA fad;
@@ -85,7 +85,7 @@ std::optional<struct stat64> Stat(const fs::path& path)
 	}
 	else
 #else
-	if (stat64(path.c_str(), &fileAttrib) != 0)
+	if (stat(path.c_str(), &fileAttrib) != 0)
 #endif
 	{
 		return std::nullopt;
