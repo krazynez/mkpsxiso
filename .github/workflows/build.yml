@@ -12,6 +12,11 @@ jobs:
       image: alpine:latest
 
     steps:
+    - name: apk prep
+      run: |
+        apk update
+        apk add cmake make git openssh
+
     - name: Fetch repo contents
       uses: actions/checkout@v7
       with:
