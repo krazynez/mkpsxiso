@@ -41,7 +41,13 @@ jobs:
     name: Create release
     runs-on: ubuntu-latest
     needs: build-alpine
+    permissions:
+      contents: write
     steps:
+      - name: Download artifacts
+        uses: actions/download-artifacts@v8
+        with:
+          name: mkpsxiso-alpine
       - name: Publish release
         uses: softprops/action-gh-release@v3
         with:
@@ -49,7 +55,7 @@ jobs:
           prerelease: true
           tag_name: latest
           files: |
-            build/mkpsxiso
+            mkpsxiso
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
