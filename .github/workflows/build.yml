@@ -43,15 +43,8 @@ jobs:
     needs:   build-alpine
 
     steps:
-    - name: Fetch build artifacts
-      if:   ${{ github.ref_type == 'tag' }}
-      uses: actions/download-artifact@v8
-
     - name: Publish release
-      if:   ${{ github.ref_type == 'tag' }}
       uses: softprops/action-gh-release@v3
       with:
-        fail_on_unmatched_files: true
-        #generate_release_notes:  true
         files: |
-          mkpsxiso-alpine/*
+          mkpsxiso-alpine/mkpsxiso
