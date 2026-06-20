@@ -15,7 +15,7 @@ jobs:
     - name: apk prep
       run: |
         apk update
-      apk add cmake make git openssh clang
+        apk add cmake make git openssh clang
 
     - name: Fetch repo contents
       uses: actions/checkout@v7
