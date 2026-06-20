@@ -49,7 +49,7 @@ jobs:
           prerelease: true
           tag_name: latest
           files: |
-            mkpsxiso-alpine/mkpsxiso
+            build/mkpsxiso
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
