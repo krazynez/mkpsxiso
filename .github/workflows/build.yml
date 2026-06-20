@@ -24,6 +24,7 @@ jobs:
 
     - name: Build and package mkpsxiso
       run: |
+        mkdir build
         cd build
         cmake ..
         make
